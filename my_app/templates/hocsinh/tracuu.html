@@ -1,0 +1,66 @@
+{% extends 'hocsinh/hocsinh_base.html' %}
+
+{% block title %} HS - TRA CỨU HỌC SINH {% endblock %}
+
+{% block add_css %}
+    <style>
+    .my-custom-scrollbar {
+    position: relative;
+    height: 500px;
+    overflow: auto;
+    }
+    .table-wrapper-scroll-y {
+    display: block;
+    }
+    </style>
+{% endblock %}
+
+{% block content %}
+    <div class="container">
+        <br>
+        <h2>TRA CỨU HỌC SINH </h2>
+        <br>
+      <div class="form-inline" action="#">
+        <input class="form-control mr-sm-2" name="kw" type="text" placeholder="Nhập id học sinh">
+        <button class="btn btn-success" type="button">Tra cứu</button>
+      </div>
+      </br>
+
+      <div class="table-wrapper-scroll-y my-custom-scrollbar" style="margin-bottom:20px">
+      <table class="table table-bordered">
+        <thead class="thead-light">
+          <tr>
+            <th>STT</th>
+            <th>Họ Tên</th>
+            <th>Lớp</th>
+            <th>TB Học Kỳ 1</th>
+            <th>TB Học Kỳ 2</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>1</td>
+            <td>Doe</td>
+            <td>Nam</td>
+            <td>2001</td>
+            <td>john@example.com</td>
+          </tr>
+          <tr>
+            <td>2</td>
+            <td>Doe</td>
+            <td>Nam</td>
+            <td>2001</td>
+            <td>john@example.com</td>
+          </tr>
+          <tr>
+            <td>3</td>
+            <td>Doe</td>
+            <td>Nam</td>
+            <td>2001</td>
+            <td>john@example.com</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    </div>
+{% endblock %}

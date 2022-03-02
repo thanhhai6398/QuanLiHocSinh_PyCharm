@@ -1,0 +1,43 @@
+<nav class="navbar navbar-inverse">
+  <div class="container-fluid">
+    <div class="navbar-header">
+      <a class="navbar-brand" href="#">QLHS</a>
+    </div>
+    <ul class="nav navbar-nav">
+      <li class="active"><a href="/giaovu">Trang chủ Giáo vụ</a></li>
+
+      <li class="dropdown"><a class="dropdown-toggle" data-toggle="dropdown" href="#"> Học sinh <span class="caret"></span></a>
+        <ul class="dropdown-menu">
+          <li><a href="/addStudent">Tiếp nhận học sinh</a></li>
+          <li><a href="/listStudent">Danh sách học sinh</a></li>
+        </ul>
+      </li>
+
+      <li class="dropdown"><a class="dropdown-toggle" data-toggle="dropdown" href="#"> Lớp học <span class="caret"></span></a>
+        <ul class="dropdown-menu">
+          <li><a href="/addClass">Thêm lớp</a></li>
+          <li><a href="/listClass">Danh sách lớp học</a></li>
+        </ul>
+      </li>
+
+      <li class="dropdown"><a class="dropdown-toggle" data-toggle="dropdown" href="#"> Học phí <span class="caret"></span></a>
+        <ul class="dropdown-menu">
+          <li><a href="/fee">Thanh toán học phí</a></li>
+          <li><a href="/receipt">Xuất biên lai</a></li>
+        </ul>
+      </li>
+          {% if current_user.is_authenticated %}
+      <li class="nav-item">
+        <a class="nav-link text-danger" href="#"> user: {{ current_user.username }}</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="/user-logout">Đăng xuất</a>
+      </li>
+    {% endif %}
+    </ul>
+
+    <ul class="nav navbar-nav navbar-right">
+      <li><a href="/user-logout"><span class="glyphicon glyphicon-log-in"></span></a></li>
+    </ul>
+  </div>
+</nav>

@@ -1,0 +1,53 @@
+{% extends 'giaovien/giaovien_base.html' %}
+
+{% block title %} QLHS - Giáo viên {% endblock %}
+
+{% block content %}
+
+    {% if current_user.is_authenticated %}
+        <h5 class="text-right text-danger">Giáo viên: {{ current_user.hoTen }}</h5>
+        <br>
+        <h2 class="text-center text-danger">Bảng điểm</h2>
+        <br>
+
+        <div class="card-body">
+            <div class="table-responsive">
+                <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+                    <thead>
+                    <tr>
+                        <th>Họ tên</th>
+                        <th>Môn</th>
+                        <th>Điểm</th>
+                        <th>Mã học kỳ</th>
+                    </tr>
+                    </thead>
+
+                    <!----------Noi-dung-------- -->
+                    <tbody>
+                    {% for s in diems %}
+                    <tr>
+                        <td > {{ s[0] }}</td>
+                        <td>{{s[1]}}</td>
+                        <td>{{s[2]}}</td>
+                        <td>{{s[3]}}</td>
+                    </tr>
+
+                    {% endfor %}
+                    </tbody>
+
+                </table>
+            </div>
+        </div>
+
+
+    {% else %}
+        <h1 class="text-center text-danger">ĐĂNG NHẬP</h1>
+        <form action="/login" method="post">
+            {% include 'layout/login.html' %}
+        </form>
+    {% endif %}
+
+    <br>
+
+
+{% endblock %}

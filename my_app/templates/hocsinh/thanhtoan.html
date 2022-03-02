@@ -1,0 +1,44 @@
+{% extends 'hocsinh/hocsinh_base.html' %}
+
+{% block title %} THANH TOÁN HỌC PHÍ {% endblock %}
+
+{% block content %}
+<div class="container">
+    <br>
+    <h2>THANH TOÁN HỌC PHÍ </h2>
+    <br>
+
+<div class="table-wrapper-scroll-y my-custom-scrollbar" style="margin-bottom:20px">
+      <table class="table table-bordered">
+        <thead class="thead-light">
+          <tr>
+            <th>Mã học phí</th>
+            <th>Tổng học phí</th>
+            <th>Tình trạng</th>
+          </tr>
+        </thead>
+        <tbody>
+        {% for h in hocPhiList %}
+          <tr>
+            <td>{{ h.id }}</td>
+            <td>{{ h.tongHocPhi }}</td>
+            <td> Chưa thanh toán </td>
+          </tr>
+        {% endfor %}
+        </tbody>
+      </table>
+    </div>
+    {% if tongHocPhi %}
+    <div class="alert alert-warning">
+      <h5> Học phí chưa thanh toán: {{ tongHocPhi }} VNĐ</h5>
+  </div>
+    <a href="javascript:;">
+    <button type="button" class="btn btn-success" onclick="thanhToanMoMo()">Thanh toán</button>
+    </a>
+    {% else %}
+    <div class="alert alert-info">
+    <h5> Đã thanh toán học phí </h5>
+  </div>
+    {% endif %}
+</div>
+{% endblock %}

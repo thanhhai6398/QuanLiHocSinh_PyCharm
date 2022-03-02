@@ -1,0 +1,42 @@
+{% extends 'giaovu/giaovu_base.html' %}
+
+{% block title %} Danh sách lớp học {% endblock %}
+
+{% block content %}
+<h1 class="text-center text-success"> Danh sách lớp học </h1>
+<div class="container">
+	<table id="example" class="table table-striped table-bordered"
+		style="width: 100%">
+		<thead>
+			<tr>
+				<th>Mã lớp</th>
+				<th>Tên lớp</th>
+				<th>Sĩ số</th>
+				<th>Khối</th>
+				<th>Thao tác</th>
+			</tr>
+		</thead>
+		<tbody>
+			{% for c in classes %}
+			<tr class="odd gradeX">
+				<td>{{c.maLop}}</td>
+				<td>{{c.tenLop}}</td>
+				<td>{{c.siSo}}</td>
+				<td>{{c.khoiLop.tenKhoi}}</td>
+				<td>
+					<a href="{{ url_for('read_or_create_list_Class', lop_id=c.maLop) }}" class="center">Xem</a> |
+					<a href="{{ url_for('delete_Class', lop_id=c.maLop) }}" onclick="return confirm('Bạn có chắn chắn muốn xóa?')" class="center">Xóa</a>
+				</td>
+			</tr>
+			{% endfor %}
+		</tbody>
+	</table>
+	<script>
+		$(document).ready(function() {
+			var table = $('#example').DataTable({
+				fixedHeader: true
+			});
+		});
+	</script>
+</div>
+{% endblock %}

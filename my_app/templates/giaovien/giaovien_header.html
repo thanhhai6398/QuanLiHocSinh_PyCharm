@@ -1,0 +1,31 @@
+<nav class="navbar navbar-inverse">
+  <div class="container-fluid">
+    <div class="navbar-header">
+      <a class="navbar-brand" href="#">QLHS</a>
+    </div>
+    <ul class="nav navbar-nav">
+      <li class="active"><a href="/giaovien">Trang chủ Giáo viên</a></li>
+
+      <li class="nav-item">
+        <a class="nav-link text-success" href="/chunhiem">Danh sách học sinh lớp chủ nhiệm</a>
+      </li>
+
+      <li class="nav-item">
+        <a class="nav-link text-success" href="/listdiem">Danh sách điểm</a>
+      </li>
+
+      {% if current_user.is_authenticated %}
+        <li class="nav-item">
+          <a class="nav-link text-danger" href="#"> user: {{ current_user.username }}</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="/user-logout">Đăng xuất</a>
+        </li>
+      {% endif %}
+    </ul>
+
+    <ul class="nav navbar-nav navbar-right">
+      <li><a href="/user-logout"><span class="glyphicon glyphicon-log-in"></span></a></li>
+    </ul>
+  </div>
+</nav>

@@ -1,0 +1,54 @@
+{% extends 'giaovu/giaovu_base.html' %}
+
+{% block title %} Lập danh sách lớp {% endblock %}
+
+{% block content %}
+
+<div class="container">
+	  <form class="form-inline" method="post">
+		  <label>Học sinh</label>
+		  <select class="form-control" name="student_id">
+			  {% for n in newSt %}
+			  <option value="{{n.id}}">{{ n.id }} - {{ n.hoTen }}</option>
+			  {% endfor %}
+		  </select>
+			  <input type="submit" class="btn btn-primary" value="Thêm"/>
+	  </form>
+
+	  <h1 class="text-center text-success"> Danh sách học sinh </h1>
+	  {% for l in lop %}
+		  <div>
+		  		<label >Tên lớp: {{l.tenLop}} </label>
+		  </div>
+		  <div>
+		  		<label>Sỉ số: {{l.siSo}}</label>
+		  </div>
+	  {% endfor%}
+	  <table class="table table-bordered">
+			<thead>
+				  <tr>
+						<th>Mã học sinh</th>
+						<th>Tên học sinh</th>
+					    <th>Giới tính</th>
+						<th>Ngày sinh</th>
+						<th>Địa chỉ</th>
+					  	<th>Thao tác</th>
+				  </tr>
+			</thead>
+			<tbody>
+			{% for s in students %}
+				  <tr>
+						<td>{{s.id}}</td>
+						<td>{{s.hoTen}}</td>
+					  	<td>{{s.gioiTinh}}</td>
+						<td>{{s.ngaySinh}}</td>
+						<td>{{s.diaChi}}</td>
+					  	<td>
+							<a href="{{ url_for('delete_Student_from_Class', student_id=s.id) }}" onclick="return confirm('Bạn có chắn chắn muốn xóa?')" class="center">Xóa</a>
+						</td>
+				  </tr>
+			{% endfor %}
+			</tbody>
+	  </table>
+</div>
+{% endblock %}

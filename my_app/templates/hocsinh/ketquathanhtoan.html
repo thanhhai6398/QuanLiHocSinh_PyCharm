@@ -1,0 +1,15 @@
+{% extends 'hocsinh/hocsinh_base.html' %}
+
+{% block title %} KẾT QUẢ THANH TOÁN HỌC PHÍ {% endblock %}
+
+{% block content %}
+<div class="container">
+    <br>
+    {% if status %}
+        <h1 class="text-justify">THANH TOÁN HỌC PHÍ THÀNH CÔNG </h1>
+    {% else %}
+        <h1 class="text-justify">THANH TOÁN HỌC PHÍ THẤT BẠI </h1>
+    {% endif %}
+    <br>
+</div>
+{% endblock %}

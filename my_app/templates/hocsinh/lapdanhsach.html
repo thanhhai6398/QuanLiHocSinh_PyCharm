@@ -1,0 +1,66 @@
+{% extends 'hocsinh/hocsinh_base.html' %}
+
+{% block title %} HS - DANH SÁCH LỚP {% endblock %}
+
+{% block add_css %}
+    <style>
+    .my-custom-scrollbar {
+    position: relative;
+    height: 550px;
+    overflow: auto;
+    }
+    .table-wrapper-scroll-y {
+    display: block;
+    }
+    </style>
+{% endblock %}
+
+{% block content %}
+    <div class="container">
+      <br>
+      <h2 style="padding-bottom: 15px">DANH SÁCH LỚP</h2>
+      <div class="form-inline" style="padding-bottom: 15px" action="#">
+        <form>
+                  <select name="cars" class="custom-select">
+                    <option selected>Chọn lớp</option>
+                    {% for l in lopList%}
+                    <option value="{{l.maLop}}">{{l.tenLop}}</option>
+                    {% endfor %}
+                  </select>
+                </form>
+      </div>
+
+      <div class="form-inline"style="padding-bottom: 10px">
+          <input class="form-control mr-sm-2" name="kw" type="text" placeholder="Nhập mã số học sinh">
+          <button class="btn btn-success" type="button">Thêm</button>
+          <label style="margin-left: auto; margin-right: 0; font-size: 20px">Sỉ số: </label>
+      </div>
+
+      <div class="table-wrapper-scroll-y my-custom-scrollbar" style="margin-bottom:20px">
+      <table class="table table-bordered">
+        <thead class="thead-light">
+          <tr>
+            <th>STT</th>
+            <th>Họ Tên</th>
+            <th>Giới Tính</th>
+            <th>Năm Sinh</th>
+            <th>Địa chỉ</th>
+            <th></th>
+          </tr>
+        </thead>
+        <tbody style="height:200px; overflow-y:scroll">
+          <tr>
+            <td>1</td>
+            <td>Doe</td>
+            <td>Nam</td>
+            <td>2001</td>
+            <td>john@example.com</td>
+            <td style="text-align: center">
+              <button type="button" class="btn btn-danger">Xóa</button>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+        </div>
+    </div>
+{% endblock %}

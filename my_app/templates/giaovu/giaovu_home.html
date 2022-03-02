@@ -1,0 +1,14 @@
+{% extends 'giaovu/giaovu_base.html' %}
+
+{%block title %} TRANG GIÁO VỤ {% endblock %}
+
+{% block content %}
+
+    {% if current_user.is_authenticated %}
+        <h3 class="text-right text-danger">Chào mừng {{ current_user.hoTen }} đến trang giáo vụ!</h3>
+        <br>
+    {% else %}
+        <h1>Welcome GIAO VU!</h1>
+    {% endif %}
+
+{% endblock %}

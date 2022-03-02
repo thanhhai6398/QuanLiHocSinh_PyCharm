@@ -1,0 +1,67 @@
+{% extends 'giaovu/giaovu_base.html' %}
+
+{% block title %}Tiếp nhận học sinh{% endblock %}
+
+{% block content %}
+    <h1 class="text-center text-success">
+        {% if request.args.get('student_id') %}Cập nhật{% else %}Tiếp nhận{% endif %} học sinh
+    </h1>
+    <div class="container" >
+        {% if err %}
+        <div class="alert alert-danger">
+            {{ err }}
+        </div>
+        {% endif %}
+        <form method="post">
+            <div class="form-group">
+                <label>Họ và tên:</label>
+                <input type="text" name="hoTen" class="form-control" value="{{ student.hoTen }}" />
+            </div>
+            <div class="form-group">
+                <label>Giới tính:</label>
+                <select class="form-control" name="gioiTinh">
+                    <option value="{{student.gioiTinh}}" >{{student.gioiTinh}}</option>
+                    <option value="Nam" >Nam</option>
+                    <option value="Nữ" >Nữ</option>
+                </select>
+
+            </div>
+                <div class="form-group">
+                <label>Ngày sinh:</label>
+                <input type="date" name="ngaySinh" class="form-control" value="{{ student.ngaySinh }}" />
+            </div>
+            <div class="form-group">
+                <label>Địa chỉ:</label>
+                <input type="text" name="diaChi" class="form-control"  value="{{ student.diaChi }}"/>
+            </div>
+              <div class="form-group">
+              <label>Email:</label>
+              <input type="email" name="email" class="form-control" value="{{ student.email }}" />
+            </div>
+            <div class="form-group">
+                <input type="submit" value="{% if request.args.get('student_id') %}Cập nhật{% else %}Thêm{% endif %}" class="btn btn-primary"/>
+                <a class="btn btn-secondary" data-toggle="modal" href="#cancelModal">Hủy</a>
+            </div>
+        </form>
+        <div class="modal fade" id="cancelModal" tabindex="-1" role="dialog" aria-labelledby="cancelModalLabel"
+                    aria-hidden="true">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="cancelModalLabel">Hủy</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                        <input type="text" name="id" hidden/>
+                        <p>Bạn có chắc chắn muốn hủy, các thay đổi sẽ không được lưu?</p>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Không</button>
+                        <a href="#" class="btn btn-primary">Có</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+{% endblock %}

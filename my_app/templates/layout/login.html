@@ -1,0 +1,41 @@
+{#<h1 class="text-center text-danger">ĐĂNG NHẬP</h1>
+<form action="/login" method="post">#}
+  <div class="form-group">
+    <label for="username">Username:</label>
+    <input type="text"
+           name="username"
+           class="form-control"
+           placeholder="Nhập username..."
+           id="username">
+  </div>
+  <div class="form-group">
+    <label for="password">Password:</label>
+    <input type="password"
+           name="password"
+           class="form-control"
+           placeholder="Nhập password..."
+           id="password">
+  </div>
+  <button type="submit" class="btn btn-primary">Đăng nhập</button>
+  <br><br>
+</form>
+
+<form action="/">
+  <a href="/" class="text-decotarion-underline">Quay về trang chủ</a>
+  <br><br>
+{#</form>#}
+
+<style>
+  a:link {
+    text-decoration: none;
+  }
+  a:visited {
+    text-decoration: underline;
+  }
+  a:hover {
+    text-decoration: underline;
+  }
+  a:active {
+    text-decoration: underline;
+  }
+</style>

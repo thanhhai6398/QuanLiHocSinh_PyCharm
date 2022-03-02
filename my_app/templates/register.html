@@ -1,0 +1,87 @@
+{% extends 'layout/base.html' %}
+
+{% block title %} ĐĂNG KÝ NGƯỜI DÙNG {% endblock %}
+
+{% block content %}
+    <br>
+    <h1 class="text-center text-danger">ĐĂNG KÝ NGƯỜI DÙNG</h1>
+
+    {% if err_msg %}
+    <div class="alert alert-danger">
+        {{ err_msg }}
+    </div>
+    {% endif %}
+
+    <form method="post">
+        <div class="form-group">
+        <label for="hoTen">Họ tên:</label>
+        <input type="text"
+               name="hoTen"
+               class="form-control"
+               placeholder="Nhập họ tên..."
+               id="hoTen" required>
+        </div>
+        <div class="form-group">
+        <label for="gioiTinh">Giới tính:</label>
+        <input type="text"
+               name="gioiTinh"
+               class="form-control"
+               placeholder="Nhập giới tính..."
+               id="gioiTinh" required>
+        </div>
+
+        <div class="form-group">
+        <label for="ngaySinh">Ngày sinh:</label>
+        <input type="date"
+               name="ngaySinh"
+               class="form-control"
+               placeholder="Nhập ngày sinh..."
+               id="ngaySinh" required>
+        </div>
+
+        <div class="form-group">
+        <label for="diaChi">Địa chỉ:</label>
+        <input type="text"
+               name="diaChi"
+               class="form-control"
+               placeholder="Nhập địa chỉ..."
+               id="diaChi" required>
+        </div>
+
+        <div class="form-group">
+        <label for="email">Email:</label>
+        <input type="text"
+               name="email"
+               class="form-control"
+               placeholder="Nhập email..."
+               id="email" required>
+        </div>
+
+        <div class="form-group">
+        <label for="username">Username:</label>
+        <input type="text"
+               name="username"
+               class="form-control"
+               placeholder="Nhập username..."
+               id="username" required>
+        </div>
+        <div class="form-group">
+        <label for="password">Password:</label>
+        <input type="password"
+               name="password"
+               class="form-control"
+               placeholder="Nhập password..."
+               id="password" required>
+        </div>
+        <div class="form-group">
+        <label for="confirm-password">Xác nhận lại password:</label>
+        <input type="password"
+               name="confirm-password"
+               class="form-control"
+               placeholder="Nhập lại password..."
+               id="confirm-password" required>
+        </div>
+        <input type="submit" value="Đăng ký" class="btn btn-danger" />
+        <br><br>
+    </form>
+{% endblock %}

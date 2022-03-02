@@ -1,0 +1,102 @@
+{% extends 'admin/master.html' %}
+
+{% block body %}
+
+    {% if current_user.is_authenticated %}
+        <h5 class="text-right text-danger">Admin: {{ current_user.hoTen }}</h5>
+        <br>
+        <h3 class="text-center">Thống kê doanh thu học phí theo năm</h3>
+        <br>
+
+        <div class="row">
+            <div class="col-md-5 col-xs-12">
+                <table class="table">
+                    <tr>
+                        <th>Năm học</th>
+                        <th>Số lượng đã đóng</th>
+                        <th>Tổng doanh thu học phí</th>
+                    </tr>
+                    {% for s in stats %}
+                    <tr>
+                        <td>{{ s[0] }}</td>
+                        <td>{{ s[1] }}</td>
+                        <td>{{ s[2] }} VNĐ</td>
+                    </tr>
+                    {% endfor %}
+                </table>
+            </div>
+            <div class="col-md-7 col-xs-12">
+                <form action="/admin/statsview/">
+                    <div class="row">
+                        <div class="col-md-6 form-group">
+                            <input type="submit" id="btn1" value="Thống kê theo học kỳ" class="btn btn-danger" />
+                        </div>
+                    </div>
+                </form>
+
+                <form action="/admin/statsviewbyyear/">
+                    <div class="row">
+                        <div class="col-md-6 form-group">
+                            <input type="submit" id="btn2" value="Thống kê theo năm" class="btn btn-danger" />
+                        </div>
+                    </div>
+                </form>
+                <canvas id="feenamStatsId"></canvas>
+            </div>
+
+        </div>
+
+
+    {% else %}
+        <h1 class="text-center text-danger">ĐĂNG NHẬP</h1>
+        <form action="/login" method="post">
+            {% include 'layout/login.html' %}
+        </form>
+    {% endif %}
+
+    <br>
+    {% block footer %}
+        {% include 'layout/footer.html' %}
+    {% endblock %}
+
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+<script>
+let labels = [], info = [];
+
+{% for c in stats %}
+    if ('{{ c[2] }}' != null) {
+        labels.push('{{ c[0] }}')
+        info.push({{ c[2] }})
+    }
+{% endfor %}
+
+let colors = []
+for (let i = 0; i < labels.length; i++) {
+    let r = parseInt(Math.random() * 255)
+    let g = parseInt(Math.random() * 255)
+    let b = parseInt(Math.random() * 255)
+    colors.push(`rgb(${r}, ${g}, ${b})`)
+}
+
+    const data = {
+  labels: labels,
+  datasets: [{
+    label: 'Thống kê doanh thu theo năm',
+    data: info,
+    backgroundColor: colors,
+    hoverOffset: 4
+  }]
+};
+
+const config = {
+  type: 'bar',
+  data: data,
+};
+
+window.onload = function() {
+    let ctx = document.getElementById('feenamStatsId').getContext('2d')
+    new Chart(ctx, config)
+}
+</script>
+
+{% endblock %}
